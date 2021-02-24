@@ -33,6 +33,11 @@ def main():
     print(jenks_test(test_list, 4))
     print(josh_test(test_list, 4))
 
+    print()
+    test_list_2 = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
+    print(jenks_test(test_list_2, 4))
+    print(josh_test(test_list_2, 4))
+
 
 if __name__ == "__main__":
     main()
