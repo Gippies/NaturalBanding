@@ -1,3 +1,4 @@
+import sys
 from statistics import median, mean
 
 import jenkspy
@@ -32,23 +33,12 @@ def josh_natural_banding(test_input_list, num_of_bands):
 
 
 def main():
-    test_list = [5100, 5000, 4900, 4750, 2000, 1800, 1500, 1200, 500, 499, 10, 0]
-    print(josh_natural_banding(test_list, 4))
-
-    print()
-    test_list_2 = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
-    print(josh_natural_banding(test_list_2, 4))
-
-    print()
-    test_list_3 = [0, 1000000, 2000000, 3000000]
-    print(josh_natural_banding(test_list_3, 2))
-
-    print()
-    test_list_4 = []
-    with open('testset.csv', 'r') as f:
+    input_list = []
+    with open(sys.argv[1], 'r') as f:
         for line in f:
-            test_list_4.append(int(line))
-    print(josh_natural_banding(test_list_4, 10))
+            input_list.append(float(line))
+    print(josh_natural_banding(input_list, int(sys.argv[2])))
+    print(jenkspy.jenks_breaks(input_list, int(sys.argv[2])))
 
 
 if __name__ == "__main__":
