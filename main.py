@@ -24,12 +24,6 @@ def josh_test(test_input_list, num_of_bands):
     for index in high_diff_index_list:
         results_list.append(test_input_list[index])
 
-    if test_input_list[0] not in results_list:
-        results_list.append(test_input_list[0])
-
-    if test_input_list[len(test_input_list) - 1] not in results_list:
-        results_list.append(test_input_list[len(test_input_list) - 1])
-
     results_list = sorted(results_list)
     return results_list
 
