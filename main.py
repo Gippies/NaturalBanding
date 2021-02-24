@@ -3,7 +3,7 @@ from statistics import median, mean
 import jenkspy
 
 
-def josh_test(test_input_list, num_of_bands):
+def josh_natural_banding(test_input_list, num_of_bands):
     diff_list = []
     test_input_list = sorted(test_input_list)
 
@@ -32,11 +32,15 @@ def josh_test(test_input_list, num_of_bands):
 
 def main():
     test_list = [5100, 5000, 4900, 4750, 2000, 1800, 1500, 1200, 500, 499, 10, 0]
-    print(josh_test(test_list, 4))
+    print(josh_natural_banding(test_list, 4))
 
     print()
     test_list_2 = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
-    print(josh_test(test_list_2, 4))
+    print(josh_natural_banding(test_list_2, 4))
+
+    print()
+    test_list_3 = [0, 1000000, 2000000, 3000000]
+    print(josh_natural_banding(test_list_3, 2))
 
 
 if __name__ == "__main__":
