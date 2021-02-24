@@ -11,13 +11,14 @@ def josh_natural_banding(test_input_list, num_of_bands):
         if i + 1 < len(test_input_list):
             diff_list.append((i, test_input_list[i + 1] - test_input_list[i]))
 
-    diff_list = sorted(diff_list, key=lambda x: x[1], reverse=True)
+    sorted_diff_list = sorted(diff_list, key=lambda x: x[1], reverse=True)
 
-    diff_diff = diff_list[0][1] - diff_list[len(diff_list) - 1][1]
-    if diff_diff >= mean(test_input_list) or diff_diff >= median(test_input_list):
+    diff_diff = sorted_diff_list[0][1] - sorted_diff_list[len(sorted_diff_list) - 1][1]
+    diff_only_list = [x for _, x in diff_list]
+    if diff_diff >= mean(diff_only_list) or diff_diff >= median(diff_only_list):
         print("Using Josh Algorithm...")
-        diff_list = diff_list[:num_of_bands - 1]
-        high_diff_index_list = [x for x, _ in diff_list]
+        sorted_diff_list = sorted_diff_list[:num_of_bands - 1]
+        high_diff_index_list = [x for x, _ in sorted_diff_list]
 
         results_list = []
         for index in high_diff_index_list:
@@ -41,6 +42,13 @@ def main():
     print()
     test_list_3 = [0, 1000000, 2000000, 3000000]
     print(josh_natural_banding(test_list_3, 2))
+
+    print()
+    test_list_4 = []
+    with open('testset.csv', 'r') as f:
+        for line in f:
+            test_list_4.append(int(line))
+    print(josh_natural_banding(test_list_4, 10))
 
 
 if __name__ == "__main__":
