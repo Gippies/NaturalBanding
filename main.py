@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 import jenkspy
 
 
@@ -6,14 +8,30 @@ def jenks_test(test_input_list, num_of_bands):
 
 
 def josh_test(test_input_list, num_of_bands):
-    diff_list = []
+    diff_dict = OrderedDict()
     test_input_list = sorted(test_input_list)
 
     for i in range(len(test_input_list)):
         if i + 1 < len(test_input_list):
-            diff_list.append((i, test_input_list[i + 1] - test_input_list[i]))
+            diff_dict[i] = test_input_list[i + 1] - test_input_list[i]
 
-    return diff_list
+    diff_list = sorted(diff_dict.items(), key=lambda x: x[1], reverse=True)
+    diff_list = diff_list[:num_of_bands - 1]
+
+    high_diff_index_list = [x for x, _ in diff_list]
+
+    results_list = []
+    for index in high_diff_index_list:
+        results_list.append(test_input_list[index])
+
+    if test_input_list[0] not in results_list:
+        results_list.append(test_input_list[0])
+
+    if test_input_list[len(test_input_list) - 1] not in results_list:
+        results_list.append(test_input_list[len(test_input_list) - 1])
+
+    results_list = sorted(results_list)
+    return results_list
 
 
 def main():
