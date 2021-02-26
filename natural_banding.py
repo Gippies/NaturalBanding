@@ -3,7 +3,7 @@ import sys
 import jenkspy
 
 
-def main():
+def natural_banding():
     fn = sys.argv[1]
     num_of_breaks = int(sys.argv[2])
 
@@ -15,4 +15,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    natural_banding()
